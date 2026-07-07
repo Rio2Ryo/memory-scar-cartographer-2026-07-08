@@ -66,6 +66,7 @@ export default function App() {
 
   const shareUrl = `${location.origin}${location.pathname}?seed=${encodeURIComponent(state.seed)}&carry=${encodeURIComponent(encodeShare(state))}`;
   const exportJson = JSON.stringify(exportState(state), null, 2);
+  const memorableBeat = `${selected.name}: ${selected.publicStory} / 裏では ${selected.privateTruth}。次回importでscar ${selected.scar}が部屋の位置を押す。`;
 
   return (
     <main>
@@ -121,6 +122,11 @@ export default function App() {
           <textarea aria-label="変な持ち越し札" value={weirdText} onChange={(event) => setWeirdText(event.target.value)} />
           <p className="sanitized">保存予定: {sanitize(weirdText)}</p>
         </div>
+      </section>
+
+      <section className="beat panel" aria-label="持ち越し名場面">
+        <h2>持ち越し名場面</h2>
+        <p>{memorableBeat}</p>
       </section>
 
       <section className="grid lower">
